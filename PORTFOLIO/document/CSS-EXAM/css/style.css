@@ -1,0 +1,189 @@
+*{
+	margin:0;
+	padding:0;
+	box-sizing:border-box;
+}
+body{
+	 font-family: 'Hedvig Letters Sans';
+}
+.d-flex{
+	display:flex;
+}
+.row{
+	display:flex;
+}
+.container{
+	max-width:1320px;
+	margin:0 auto;
+}
+.w-2{
+	width:50%;width:50%;
+}
+.w-3{
+	width:33.33%;
+}
+.w-4{
+	width:25%;
+}
+.w-30{
+	width:30%;
+}
+.w-70{
+	width:70%;
+}
+ul li{
+	list-style:none;
+}
+a{
+	text-decoration:none;
+	display: inline-block;
+}
+.theme-btn{
+	background-color:#AF2655;
+	padding:15px 30px;
+	border-radius:30px;
+	color:white;
+}
+.align-items-center{
+	align-items:center;
+}
+.justify-between{
+	justify-content:space-between;
+}
+.text-center{
+	text-align: center;
+}
+
+
+
+/* HEADER */
+
+.header {
+	background-color: rgb(255, 59, 92);
+	padding: 10px 0;
+}
+.menu ul li{
+	color:white;
+	font-size: 18px;
+	padding: 0 10px;
+}
+.menu ul a{
+	color:white;
+}
+h1{
+	font-size:40px;
+	text-align:center;
+	padding-top:20px;
+	color:white;
+}
+.header p{
+	color:white;
+	font-size:20px;
+	text-align:center;
+}
+h1 + a{
+	text-align:center;
+}
+
+/* events */
+
+.events{
+	margin:100px 0;
+}
+.events h2{
+	text-align:center;
+	font-size:36px;
+	padding-bottom:80px;
+}
+.events h3{
+	text-align:center;
+}
+.events p{
+	text-align:center;
+	padding:20px;
+}
+.events-items a{
+	padding-bottom:20px;
+	margin-left:210px;
+}
+.events-items{
+	padding:0 40px;
+}
+
+/* gallery */
+
+.gallery{
+	margin:100px 0;
+}
+.gallery h2{
+	font-size:40px;
+	padding-bottom:20px;
+	padding-top:20px;
+}
+.gallery-items p{
+	line-height:32px;
+	font-size:20px;
+	margin-bottom:30px;
+}
+.gallery-img ul li{
+	margin:10px;
+}
+.gallery-img img{
+	margin:10px;
+}
+
+
+
+/* FOOTER */
+
+.footer-inner{
+	background-color:black;
+	padding:80px 0;
+	color:white;	
+}
+.footer-inner a{
+	color:white;	
+}
+.footer-inner h2{
+		padding-bottom:25px;
+}
+.footer-inner li{
+	padding-bottom:10px;
+}
+.footer-items p{
+	padding:20px 0;
+	padding-bottom:30px;
+	line-height:30px;
+}
+.footer-inner li i{
+	padding-right:10px;
+}
+.footer-items li i{
+	padding:10px;
+	font-size:25px;
+	background-color:rgba(255,255,255,0.1);
+	border-radius:50%;
+	margin-right:10px;
+}
+.footer-inner a img{
+	padding:2px;
+}
+.footer-inner h5{
+	color:black;
+	background-color:white;
+	padding:15px 30px;
+	margin-top:10px;
+	border-radius:7px;
+}
+
+
+
+
+.copyright{
+	background-color:rgb(20,29,55);
+}
+.copyright p{
+	color:white;
+	text-align:left;
+	padding:15px 10px;	
+}

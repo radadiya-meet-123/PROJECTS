@@ -1,0 +1,162 @@
+@font-face {
+    font-family: 'Sofia Sans Semi Condensed';
+    src: url('SofiaSansSemiCondensed-BlackItalic.woff2') format('woff2'),
+        url('SofiaSansSemiCondensed-BlackItalic.woff') format('woff');
+    font-weight: 900;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Sofia Sans Semi Condensed';
+    src: url('SofiaSansSemiCondensed-BoldItalic.woff2') format('woff2'),
+        url('SofiaSansSemiCondensed-BoldItalic.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Sofia Sans Semi Condensed';
+    src: url('SofiaSansSemiCondensed-Bold.woff2') format('woff2'),
+        url('SofiaSansSemiCondensed-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Sofia Sans Semi Condensed';
+    src: url('SofiaSansSemiCondensed-ExtraBold.woff2') format('woff2'),
+        url('SofiaSansSemiCondensed-ExtraBold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Sofia Sans Semi Condensed';
+    src: url('SofiaSansSemiCondensed-Italic.woff2') format('woff2'),
+        url('SofiaSansSemiCondensed-Italic.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Sofia Sans Semi Condensed';
+    src: url('SofiaSansSemiCondensed-MediumItalic.woff2') format('woff2'),
+        url('SofiaSansSemiCondensed-MediumItalic.woff') format('woff');
+    font-weight: 500;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Sofia Sans Semi Condensed';
+    src: url('SofiaSansSemiCondensed-SemiBoldItalic.woff2') format('woff2'),
+        url('SofiaSansSemiCondensed-SemiBoldItalic.woff') format('woff');
+    font-weight: 600;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Sofia Sans Semi Condensed';
+    src: url('SofiaSansSemiCondensed-Medium.woff2') format('woff2'),
+        url('SofiaSansSemiCondensed-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Sofia Sans Semi Condensed';
+    src: url('SofiaSansSemiCondensed-ExtraBoldItalic.woff2') format('woff2'),
+        url('SofiaSansSemiCondensed-ExtraBoldItalic.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Sofia Sans Semi Condensed';
+    src: url('SofiaSansSemiCondensed-ExtraLightItalic.woff2') format('woff2'),
+        url('SofiaSansSemiCondensed-ExtraLightItalic.woff') format('woff');
+    font-weight: 200;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Sofia Sans Semi Condensed';
+    src: url('SofiaSansSemiCondensed-ExtraLight.woff2') format('woff2'),
+        url('SofiaSansSemiCondensed-ExtraLight.woff') format('woff');
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Sofia Sans Semi Condensed';
+    src: url('SofiaSansSemiCondensed-ThinItalic.woff2') format('woff2'),
+        url('SofiaSansSemiCondensed-ThinItalic.woff') format('woff');
+    font-weight: 100;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Sofia Sans Semi Condensed';
+    src: url('SofiaSansSemiCondensed-Black.woff2') format('woff2'),
+        url('SofiaSansSemiCondensed-Black.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Sofia Sans Semi Condensed';
+    src: url('SofiaSansSemiCondensed-LightItalic.woff2') format('woff2'),
+        url('SofiaSansSemiCondensed-LightItalic.woff') format('woff');
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Sofia Sans Semi Condensed';
+    src: url('SofiaSansSemiCondensed-Thin.woff2') format('woff2'),
+        url('SofiaSansSemiCondensed-Thin.woff') format('woff');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Sofia Sans Semi Condensed';
+    src: url('SofiaSansSemiCondensed-Light.woff2') format('woff2'),
+        url('SofiaSansSemiCondensed-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Sofia Sans Semi Condensed';
+    src: url('SofiaSansSemiCondensed-Regular.woff2') format('woff2'),
+        url('SofiaSansSemiCondensed-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Sofia Sans Semi Condensed';
+    src: url('SofiaSansSemiCondensed-SemiBold.woff2') format('woff2'),
+        url('SofiaSansSemiCondensed-SemiBold.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+

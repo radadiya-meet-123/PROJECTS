@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account</title>
+    <link href="fonts/fonts/remixicon.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="fonts/jost/stylesheet.css" type="text/css">
+    <link rel="stylesheet" href="css/account.css" type="text/css">
+</head>
+<body>
+  
+<!-- HEADER -->
+
+<header class="header">
+	<div class="container">
+        <div class="navigation d-flex justify-between align-items-center relative">
+            <a href="javascript:void(0)" class="logo">
+                <img src="img/logo.png" title="logo" alt="logo" width="125px"/>
+            </a>	
+            <nav>
+                <ul class="d-flex flex-direction align-items-center">
+                    <li>
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="product.html">Products</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">About</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">Contact</a>
+                    </li>
+                    <li>
+                        <a href="account.html">Account</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">
+                            <i class="ri-shopping-bag-line"></i>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+
+<main>
+
+<section class="banner">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="w-2">
+                <div class="banner-img">
+                    <img src="img/header-img.png" alt="header-img" title="header-img" width="100%">
+                </div>
+            </div>
+            <div class="w-2">
+                <div class="banner-item form-container">
+                    <span id="loginBtn">Login</span>
+                    <span id="registerBtn" class="relative">Register</span>
+                    <form id="loginForm">
+                        <input placeholder="Username" type="text"/>
+                        <input placeholder="Password" type="password"/>
+                        <button>Login</button>
+                    </form>
+                    <form id="registerForm" style="display: none;">
+                        <input placeholder="Username" type="text"/>
+                        <input placeholder="Email" type="email"/>
+                        <input placeholder="Password" type="password"/>
+                        <button>Register</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+
+<section class="footer"> 
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="w-4">
+                <div class="footer-items">
+                    <h3>Download our App</h3>
+                    <p>Download App for Android and ios mobile phone.</p>
+                    <img src="img/footer-1.png" alt="footer-1" title="footer-1" width="125px">
+                    <img src="img/footer-2.png" alt="footer-2" title="footer-2" width="125px">
+                </div>
+            </div>
+            <div class="w-4">
+                <div class="footer-items">
+                    <img src="img/logo-2.png" alt="logo-2" title="logo-2" width="125px">
+                    <p>Our Purpose Is To Sustainably Make the Pleasure and Benefits of Sports Accessible to the Many.</p>
+                </div>
+            </div>
+            <div class="w-4">
+                <div class="footer-items">
+                    <h3>Useful Links</h3>
+                    <ul>
+                        <li>Coupons</li>
+                        <li>Blog Post</li>
+                        <li>Return Policy</li>
+                        <li>Join Affiliate</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="w-4">
+                <div class="footer-items">
+                    <h3>Follow us</h3>
+                    <ul>
+                        <li>Facebook</li>
+                        <li>Twitter</li>
+                        <li>Instagram</li>
+                        <li>Youtube</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>Copyright 2020 - Rahul Kumar Sinha</p>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.getElementById("loginBtn").onclick = function() {
+        document.getElementById("loginForm").style.display = "block";
+        document.getElementById("registerForm").style.display = "none";
+    }
+    document.getElementById("registerBtn").onclick = function() {
+        document.getElementById("loginForm").style.display = "none";
+        document.getElementById("registerForm").style.display = "block";
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <link rel="stylesheet" href="../dist/animate.css" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="../fonts/remix-icon/remixicon.css" type="text/css">
+    <link rel="stylesheet" href="../fonts/Urbanist-fonts/stylesheet.css" type="text/css">
+    <link rel="stylesheet" href="../dist/slick.css" type="text/css">
+    <link rel="stylesheet" href="../dist/slick-theme.css" type="text/css">
+    <link rel="stylesheet" href="../dist/swiper-bundle.min.css" type="text/css">
+    <style>
+      *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      :root {
+        --bg-color: #ffffff;
+        --text-color: #000000;
+        --theme-color: #f857a6;
+        --theme-text:red;
+      }
+      body {
+        background-color: var(--bg-color);
+        color: var(--text-color);
+      }
+      body.dark {
+        --bg-color: #000000;
+        --text-color: #ffffff;
+      }
+      .wrapper{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          min-height: 100vh;
+          background-color: #f857a6;
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          z-index: 99999;
+      }
+      .wrapper .loader{
+          display: flex;
+          justify-content: space-between;
+          padding: 0 20px;
+          position: relative;
+      }
+      .loader .loading{
+          background: #fff;
+          width: 30px;
+          height: 30px;
+          border-radius: 50px;
+          margin: 0 10px;
+          animation: load 0.7s ease infinite;
+      }
+      .loader .loading.one{
+          animation-delay: 0.3s;
+      }
+      .loader .loading.two{
+          animation-delay: 0.4s;
+      }
+      .loader .loading.three{
+          animation-delay: 0.5s;
+      }
+      @keyframes load{
+          0%{
+              width: 30px;
+              height: 30px;
+          }
+          50%{
+              width: 20px;
+              height: 20px;
+          }
+      }
+      a{
+        display: inline-block;
+      }
+      .dropdown{
+        box-shadow: 0 0 3px rgb(60 72 88 / 0.15);
+      }
+      .sticky{
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 9999;
+        animation: slidedown 0.8s linear;
+        box-shadow: 0 0 3px rgb(60 72 88 / 0.15);
+        background-color: rgba(255,255,255,.97);
+        color: #000000;
+      }
+      @keyframes slidedown {
+        0%{
+              transform: translateY(-100%);
+        } 
+      }
+      .gradient-1{
+        background-color: var(--theme-color);
+      }
+      #number_up,
+      #number_down{
+        text-align: center;
+      }
+      .swiper {
+        width: 100%;
+        height: 100%;
+      }
+      .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+     /* THEME-SWICHER */
+      .switch {
+        position: absolute;
+        top:25%;
+        right:0;
+        z-index: 9;
+        display: inline-block;
+        width: 44px;
+        height: 24px;
+      }
+      .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+      .switch input:checked + .slider {
+        background-color: #476173;
+      }
+      .switch input:checked + .slider:before {
+        transform: translateX(20px);
+        background-color: transparent;
+        border-radius: 50%;
+        border-top-color: transparent;
+        border-left-color: transparent;
+        border-right-color: transparent;
+        box-shadow: inset -5px -3px 0 #d8e9ef;
+      }
+      .switch .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #7bb9f5;
+        transition: 0.4s;
+        border-radius: 20px;
+        box-shadow: 0 0 0.25em rgba(67, 71, 85, 0.27), 0.2px 0.2em 24px 0 rgba(1, 29, 77, 0.15);
+      }
+      .switch .slider:before {
+        position: absolute;
+        content: "";
+        height: 16px;
+        width: 16px;
+        left: 4px;
+        bottom: 4px;
+        background-color: yellow;
+        transition: 0.4s;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 16px;
+      }
+      .swicher li{
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      cursor: pointer;
+      }
+      .swicher{
+          position: fixed;
+          top: 20%;
+          right: 0;
+          transform: translate(100%,-50%);
+          transition: 0.8s;
+      }
+      .swicher ul{
+          display: flex;
+          list-style: none;
+          padding: 10px;
+          border: 1px solid var(--theme-color);
+      }
+      .swicher i{
+          font-size: 30px;
+          border: 1px solid var(--theme-color);
+          color: var(--theme-color);
+          position: absolute;
+          right: 100%;
+          top: 0;
+          border-right: none;
+          cursor: pointer;
+      }
+      .slide{
+          transform: translate(0,-50%);
+      } 
+    </style>
+</head>
+
+<body> 
+
+  <!-- HEADER -->
+  
+  <header class="px-5 py-4 md:py-2 absolute top-0 left-0 right-0 z-10" id="top" style="background-color: var(--bg-color);
+  color: var(--text-color);">
+    <div class="container mx-auto  flex justify-between items-center">
+      <a href="javascript-void:(0)">
+        <img src="../img/logo.png" title="logo" alt="logo" width="120px">
+      </a>
+      <nav class="hidden lg:block absolute top-full lg:static right-0 left-0 bg-white lg:bg-transparent">
+        <ul class="flex flex-col lg:flex-row">
+          <li class="ml-7 relative">
+            <a href="javascript:void(0)" class="py-4 hover:visible hover:opacity-100" style="color: var(--theme-color);">
+              Hero
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-3 h-3 inline">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+              </svg>                
+            </a>
+            <div class="dropdown absolute left-0 top-full w-32 bg-white pl-3 opacity-0 invisible">
+              <ul class="">
+                <li>
+                  <a href="javascript:void(0)" class="py-1">Fashion One</a>
+                </li>
+                <li>
+                  <a href="javascript:void(0)" class="py-1">Fashion One</a>
+                </li>
+                <li>
+                  <a href="javascript:void(0)" class="py-1">Fashion One</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="ml-7">
+            <a href="javascript:void(0)" class="py-4 hover:text-[#f857a6]">
+              Products
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-3 h-3 inline">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+              </svg>
+            </a>
+          </li>
+          <li class="ml-7">
+            <a href="javascript:void(0)" class="py-4 hover:text-[#f857a6]">
+              Shop
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-3 h-3 inline">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+              </svg>
+            </a>
+          </li>
+          <li class="ml-7">
+            <a href="javascript:void(0)" class="py-4 hover:text-[#f857a6]">
+              Pages
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-3 h-3 inline">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+              </svg>
+            </a>
+          </li>
+          <li class="ml-7">
+            <a href="javascript:void(0)" class="py-4 hover:text-[#f857a6]">Sale</a>
+          </li>
+          <li class="ml-7">
+            <a href="javascript:void(0)" class="py-4 hover:text-[#f857a6]">Contact</a>
+          </li>
+        </ul>
+      </nav>
+      <div class="flex items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 ">
+          <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"/>
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-7 h-7 ml-2 rounded-full p-1" style="background-color: var(--theme-color);color:#fff;">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="lg:block hidden w-7 h-7 ml-2 rounded-full p-1" style="background-color: var(--theme-color);color:#fff;">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
+        </svg>
+        <img src="../img/profile-1.jpg" title="profile-1" alt="profile-1" class="lg:block hidden w-8 rounded-full outline outline-1 outline-[#f857a6] ml-2">     
+        <a href="javascript:void(0)" class="toggle">
+          <i class="ri-menu-line lg:hidden ms-3"></i>  
+        </a>                      
+      </div>
+    </div>
+  </header>
+
+<main>
+ 
+  <!-- BANNER -->
+
+  <div class="swiper mySwiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide overflow-hidden">
+        <section class="banner bg-local w-full relative bg-center" style="background-image: url(../img/banner.png)">
+          <div class="container mx-auto">
+            <div class="flex-wrap flex py-[4.5rem] pt-[100px]">
+              <div class="w-full xl:w-1/2">
+                <div class="banner-items mb-[50px] animate__fadeIn wow">
+                  <h1 class="text-[2rem] lg:text-[3rem] mr-5 mb-3">Networking 
+                    <span style="color: var(--theme-color);">solutions</span>
+                     for </br> worldwide 
+                    </br> communication
+                  </h1>
+                  <p class="text-[1.3rem]">
+                    We're a company that focuses on establishing </br> long-term relationships with customers.
+                  </p>
+                  <a href="javascript:void(0)" class="mt-5 gradient-1 py-4 px-5 transition-all rounded text-white hover:bg-black">
+                    Explore Now
+                  </a>
+                </div>
+              </div>
+              <div class="w-full xl:w-1/2">
+                <div class="banner-img mt-50 p-[50px] xl:p-0 animate__fadeIn wow">
+                  <img src="../img/banner-img.png" class="px-20 relative" title="banner-img" alt="banner-img" width="100%">
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div class="swiper-slide">
+        <section class="banner bg-local w-full relative bg-center" style="background-image: url(../img/banner.png)">
+          <div class="container mx-auto">
+            <div class="flex-wrap flex py-[4.5rem] pt-[100px]">
+              <div class="w-full xl:w-1/2">
+                <div class="banner-items mb-[50px]">
+                  <h1 class="text-[2rem] lg:text-[3rem] mr-5 mb-3">Networking 
+                    <span style="color: var(--theme-color);">solutions</span>
+                     for </br> worldwide 
+                    </br> communication
+                  </h1>
+                  <p class="text-[1.3rem]">
+                    We're a company that focuses on establishing </br> long-term relationships with customers.
+                  </p>
+                  <a href="javascript:void(0)" class="mt-5 gradient-1 py-4 px-3 rounded text-white">
+                    Explore Now
+                  </a>
+                </div>
+              </div>
+              <div class="w-full xl:w-1/2">
+                <div class="banner-img mt-50 p-[50px] xl:p-0">
+                  <img src="../img/banner-img.png" class="px-20" title="banner-img" alt="banner-img" width="100%">
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-pagination"></div>
+  </div>
+
+    <label class="switch">
+      <input type="checkbox" id="theme-switcher">
+      <span class="slider round"></span>
+    </label>
+  
+    <div class="swicher absolute top-12 z-20">
+      <i class="ri-palette-line"></i>
+      <ul>
+          <li style="background-color: black;"></li>
+          <li style="background-color: blue;margin: 0 5px;"></li>
+          <li style="background-color: red;"></li>
+          <li style="background-color: #FF8911;margin: 0 5px;"></li>
+          <li style="background-color: #f857a6;"></li>
+      </ul>
+    </div>
+
+  <!-- OUR FEATURES -->
+
+  <section class="features my-[100px]">
+    <div class="container mx-auto">
+      <div class="features-title text-center mb-[70px] animate__fadeInDown wow">
+        <h6 class="mb-2" style="color: var(--theme-color);">OUR FEATURES</h6>
+        <h2 class="text-3xl md:text-4xl font-medium tracking-wide">The service we offer is specifically </br> designed to meet your needs.</h2>
+      </div>
+      <div class="flex flex-wrap">
+        <div class="w-full lg:w-1/2">
+          <div class="features-items flex px-4 animate__fadeInDown wow">
+            <div>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256.02 213.34" data-inject-url="https://sandbox-tailwindcss.ibthemespro.com/assets/img/icons/solid/script.svg" class="svg-inject icon-svg !w-[2.2rem] !h-[2.2rem]  solid-duo text-grape-fuchsia !mr-4"><path class="fill-[#f857a6]" d="M162.66 106.34a8 8 0 01-6.06-13.2l11.54-13.47-11.54-13.45a8 8 0 1112.14-10.42l16 18.67a8 8 0 010 10.42l-16 18.67a8 8 0 01-6.08 2.78zm-69.31 0a8 8 0 01-6.08-2.78l-16-18.67a8 8 0 010-10.42l16-18.67a8 8 0 0112.15 10.42L87.88 79.67l11.54 13.46a8 8 0 01-6.07 13.21zm24.87 15.8a8 8 0 01-6-9.6l16-69.33a8 8 0 1115.6 3.6l-16 69.33a8 8 0 01-9.6 6z"></path><path class="fill-[#605dba]" d="M237.33 0H18.67A18.76 18.76 0 000 18.67v144a18.76 18.76 0 0018.67 18.67h81.68c-1.25 5.35-4.57 14-13.45 22.9a5.33 5.33 0 003.77 9.1h74.67a5.33 5.33 0 003.78-9.1c-8.86-8.86-12.27-17.54-13.6-22.9h81.82A18.77 18.77 0 00256 162.67v-144A18.79 18.79 0 00237.33 0zm-2.66 138.67H21.33V21.34h213.33v117.33z"></path></svg>
+            </div>
+            <div>
+              <h4 class="text-[#343f52] text-[1.4rem] font-medium mb-2">Software & Integration</h4> 
+              <p class="text-[#60697b] text-[17px] leading-7">Duis mollis gravida commodo id luctus erat porttitor ligula, eget lacinia odio sem aget elit nullam quis risus eget.</p>
+            </div>           
+          </div>
+        </div>
+        <div class="w-full lg:w-1/2">
+          <div class="features-items flex px-4 mt-[40px] lg:mt-0 animate__fadeInUp wow">
+            <div>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" data-inject-url="https://sandbox-tailwindcss.ibthemespro.com/assets/img/icons/solid/verify.svg" class="svg-inject icon-svg !w-[2.2rem] !h-[2.2rem]  solid-duo text-grape-fuchsia !mr-4"><path class="fill-[#f857a6]" d="M186.67 117.33A69.34 69.34 0 10256 186.68a69.43 69.43 0 00-69.33-69.35zm37.34 55L186.68 215a10.65 10.65 0 01-7.68 3.63h-.35a10.67 10.67 0 01-7.53-3.12l-21.33-21.33a10.67 10.67 0 0115.09-15.09l13.26 13.27L208 158.3a10.67 10.67 0 1116 14.07z"></path><path class="fill-[#605dba]" d="M177.92 32.32L92.58.32a5.88 5.88 0 00-3.84 0l-85.35 32a5.36 5.36 0 00-3.39 5v68.59c0 97.28 88.64 117.76 89.5 118a6.28 6.28 0 002.34 0 73.48 73.48 0 0010.77-3.41A89.34 89.34 0 0196 186.68a90.78 90.78 0 0185.34-90.56V37.35a5.38 5.38 0 00-3.42-5z"></path></svg>
+            </div>
+            <div>
+              <h4 class="text-[#343f52] text-[1.4rem] font-medium mb-2">Software & Integration</h4> 
+              <p class="text-[#60697b] text-[17px] leading-7">Duis mollis gravida commodo id luctus erat porttitor ligula, eget lacinia odio sem aget elit nullam quis risus eget.</p>
+            </div>           
+          </div>
+        </div>
+        <div class="w-full lg:w-1/2">
+          <div class="features-items flex px-4 mt-[40px] animate__fadeInDown wow">
+            <div>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256.03 256.02" data-inject-url="https://sandbox-tailwindcss.ibthemespro.com/assets/img/icons/solid/cloud-network.svg" class="svg-inject icon-svg !w-[2.2rem] !h-[2.2rem]  solid-duo text-grape-fuchsia !mr-4"><path class="fill-[#605dba]" d="M193.17 36.14C180.21 14.05 155.12 0 128 0 93.52 0 63.55 22.64 55.62 53.65c-25.27 2.75-44.95 23.09-44.95 47.68 0 26.46 22.79 48 50.79 48h123.6c33.24 0 60.28-25.52 60.28-56.9 0-28.67-22.57-52.62-52.17-56.29z"></path><path class="fill-[#f857a6]" d="M245.34 208h-74.67v-8A18.69 18.69 0 00152 181.33h-13.33V144a10.67 10.67 0 10-21.34 0v37.33H104A18.69 18.69 0 0085.33 200v8H10.66a10.67 10.67 0 000 21.34h74.68v8A18.7 18.7 0 00104 256h48a18.7 18.7 0 0018.67-18.68v-8h74.67a10.67 10.67 0 100-21.34z"></path></svg>
+            </div>
+            <div>
+              <h4 class="text-[#343f52] text-[1.4rem] font-medium mb-2">Software & Integration</h4> 
+              <p class="text-[#60697b] text-[17px] leading-7">Duis mollis gravida commodo id luctus erat porttitor ligula, eget lacinia odio sem aget elit nullam quis risus eget.</p>
+            </div>           
+          </div>
+        </div>
+        <div class="w-full lg:w-1/2">
+          <div class="features-items flex px-4 mt-[40px] animate__fadeInUp wow">
+            <div>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" data-inject-url="https://sandbox-tailwindcss.ibthemespro.com/assets/img/icons/solid/director.svg" class="svg-inject icon-svg !w-[2.2rem] !h-[2.2rem]  solid-duo text-grape-fuchsia !mr-4"><path class="fill-[#605dba]" d="M163.78 19.12A42.63 42.63 0 00128 0c-18.54 0-34.77 11.81-40.14 28.34C74.26 31 64 42.66 64 56.53c0 15.89 13.42 28.8 29.92 28.8h63.3c19.18 0 34.78-15 34.78-33.43 0-16.22-12.08-29.87-28.22-32.78z"></path><path class="fill-[#f857a6]" d="M224 168a8 8 0 01-8-8v-16H40v16a8 8 0 01-16 0v-24a8 8 0 018-8h192a8 8 0 018 8v24a8 8 0 01-8 8z"></path><path class="fill-[#f857a6]" d="M128 170.67a8 8 0 01-8-8v-48a8 8 0 0116 0v48a8 8 0 01-8 8z"></path><circle class="fill-[#605dba]" cx="32" cy="197.33" r="16"></circle><path class="fill-[#605dba]" d="M40 224H24a24 24 0 00-24 24 8 8 0 008 8h48a8 8 0 008-8 24 24 0 00-24-24z"></path><circle class="fill-[#605dba]" cx="128" cy="197.33" r="16"></circle><path class="fill-[#605dba]" d="M136 224h-16a24 24 0 00-24 24 8 8 0 008 8h48a8 8 0 008-8 24 24 0 00-24-24z"></path><circle class="fill-[#605dba]" cx="224" cy="197.33" r="16"></circle><path class="fill-[#605dba]" d="M232 224h-16a24 24 0 00-24 24 8 8 0 008 8h48a8 8 0 008-8 24 24 0 00-24-24z"></path></svg>
+            </div>
+            <div>
+              <h4 class="text-[#343f52] text-[1.4rem] font-medium mb-2">Software & Integration</h4> 
+              <p class="text-[#60697b] text-[17px] leading-7">Duis mollis gravida commodo id luctus erat porttitor ligula, eget lacinia odio sem aget elit nullam quis risus eget.</p>
+            </div>           
+          </div>
+        </div>
+        <div class="w-full lg:w-1/2">
+          <div class="features-items flex px-4 mt-[40px] animate__fadeInDown wow">
+            <div>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 213.34" data-inject-url="https://sandbox-tailwindcss.ibthemespro.com/assets/img/icons/solid/setting.svg" class="svg-inject icon-svg !w-[2.2rem] !h-[2.2rem]  solid-duo text-grape-fuchsia !mr-4"><path class="fill-[#f857a6]" d="M177.81 73.28c.11-1.28.21-2.56.21-4s-.12-2.67-.21-4l8.85-6.52a13.19 13.19 0 003.63-17.07l-7.89-13.98a12.76 12.76 0 00-16.64-5.44L156 26.86a51.33 51.33 0 00-6.08-3.63l-1.12-11.39A13 13 0 00135.89 0H120.1a13 13 0 00-12.92 11.84l-1.07 11.41a51.33 51.33 0 00-6.11 3.63l-9.81-4.59a12.86 12.86 0 00-16.64 5.44L65.7 41.81a13.12 13.12 0 003.63 17.07l8.85 6.51c-.12 1.28-.21 2.56-.21 4s.11 2.68.21 4l-8.85 6.51a13.12 13.12 0 00-3.62 17l7.89 14.08a12.84 12.84 0 0016.64 5.44l9.81-4.59a51.33 51.33 0 006.08 3.63l1.07 11.41a13 13 0 0012.91 11.84h15.79a13 13 0 0012.92-11.84l1.07-11.41a51.33 51.33 0 006.08-3.63l9.81 4.59a12.76 12.76 0 0016.64-5.44l7.88-14.08a13.12 13.12 0 00-3.63-17.07zm-23.14-3.94A26.67 26.67 0 11128 42.67a26.69 26.69 0 0126.67 26.67z"></path><path class="fill-[#605dba]" d="M224 149.34H32a32 32 0 000 64h192a32 32 0 000-64zM42.67 192a10.67 10.67 0 1110.67-10.66A10.67 10.67 0 0142.67 192zM96 192a10.67 10.67 0 1110.67-10.66A10.67 10.67 0 0196 192zm64 0a10.67 10.67 0 1110.67-10.66A10.67 10.67 0 01160 192zm53.33 0A10.67 10.67 0 11224 181.34 10.67 10.67 0 01213.33 192z"></path></svg>
+            </div>
+            <div>
+              <h4 class="text-[#343f52] text-[1.4rem] font-medium mb-2">Software & Integration</h4> 
+              <p class="text-[#60697b] text-[17px] leading-7">Duis mollis gravida commodo id luctus erat porttitor ligula, eget lacinia odio sem aget elit nullam quis risus eget.</p>
+            </div>           
+          </div>
+        </div>
+        <div class="w-full lg:w-1/2">
+          <div class="features-items flex px-4 mt-[40px] animate__fadeInUp wow">
+            <div>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" data-inject-url="https://sandbox-tailwindcss.ibthemespro.com/assets/img/icons/solid/server.svg" class="svg-inject icon-svg !w-[2.2rem] !h-[2.2rem]  solid-duo text-grape-fuchsia !mr-4"><path class="fill-[#f857a6]" d="M250.58 126.14l-56-19a8 8 0 00-5.16 0l-56 19a8 8 0 00-5.42 7.57v42.87c0 52.32 58.38 77.72 60.88 78.8a8.19 8.19 0 003.12.62 7.85 7.85 0 003.12-.64c2.5-1.06 60.88-26.48 60.88-78.78v-42.87a8 8 0 00-5.42-7.57zm-23.52 40.45l-29.33 37.33a10.66 10.66 0 01-15.33 1.5l-18.67-16a10.66 10.66 0 0113.87-16.19l10.22 8.77 22.47-28.57a10.66 10.66 0 0116.77 13.18z"></path><path class="fill-[#605dba]" d="M202.67 0H32a32 32 0 000 64h170.67a32 32 0 000-64zM32 42.67A10.67 10.67 0 1142.67 32 10.67 10.67 0 0132 42.67zm42.67 0A10.67 10.67 0 1185.34 32a10.67 10.67 0 01-10.67 10.67zM32 85.33a32 32 0 000 64h74.67v-15.57a29.38 29.38 0 0120-27.84l55.89-19a29 29 0 019.49-1.6zM32 128a10.67 10.67 0 1110.67-10.67A10.7 10.7 0 0132 128zm42.67 0a10.67 10.67 0 1110.67-10.67A10.7 10.7 0 0174.67 128zm32 48.53v-5.87H32a32 32 0 000 64h95.68c-12.27-15.57-21.01-35.09-21.01-58.13zM32 213.33a10.67 10.67 0 1110.67-10.66A10.7 10.7 0 0132 213.33zm42.67 0a10.67 10.67 0 1110.67-10.66 10.7 10.7 0 01-10.67 10.66z"></path></svg>
+            </div>
+            <div>
+              <h4 class="text-[#343f52] text-[1.4rem] font-medium mb-2">Software & Integration</h4> 
+              <p class="text-[#60697b] text-[17px] leading-7">Duis mollis gravida commodo id luctus erat porttitor ligula, eget lacinia odio sem aget elit nullam quis risus eget.</p>
+            </div>           
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OUR-CUSTOMERS -->
+
+  <section class="customers">
+    <div class="container mx-auto">
+      <div class="flex flex-wrap items-center">
+        <div class="w-full xl:w-1/2">
+          <div class="customers-img px-[60px] xl:ml-[50px] lg:p-[100px] xl:p-[60px] animate__fadeInDown wow">
+            <img src="../img/cocustomers-1.png" title="customers-1" alt="customers-1" class="w-full">
+          </div>
+        </div>
+        <div class="w-full xl:w-1/2">
+          <div class="customers-items mt-[50px] xl:ml-[90px] animate__fadeInUp wow">
+            <h4 class="mb-3" style="color: var(--theme-color);">HAVE PERFECT CONTROL</h4>
+            <h2 class="text-[2rem] font-semibold mb-4">We bring solutions to make</br> life easier for our </br> customers.</h2>
+            <p class="mb-5 leading-8 text-[17px] text-[#60697b]">Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue rutrum.</p>
+            <div class="flex flex-wrap mx-[-15px] mt-[-15px]">
+              <div class="w-1/2">
+                <ul class="mt-[30px] text-[#60697b]">
+                  <li class="relative pl-6">
+                    <span class="w-5 h-5 p-1 text-[0.8rem] flex justify-center items-center bg-[#e2e2f3] text-[#605dba] rounded-[100%] top-[0.2rem] absolute left-0">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                      </svg>                      
+                    </span>
+                    <span class="text-[17px]">Etiam porta euismod malesuada mollis.</span>
+                  </li>
+                  <li class="relative pl-6 mt-3">
+                    <span class="w-5 h-5 p-1 text-[0.8rem] flex justify-center items-center bg-[#e2e2f3] text-[#605dba] rounded-[100%] top-[0.2rem] absolute left-0">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                      </svg>                      
+                    </span>
+                    <span>Vivamus sagittis lacus vel augue rutrum.</span>
+                  </li>
+                </ul>
+              </div>
+              <div class="w-1/2">
+                <ul  class="mt-[30px] text-[#60697b]">
+                  <li class="relative pl-6">
+                    <span class="w-5 h-5 p-1 text-[0.8rem] flex justify-center items-center bg-[#e2e2f3] text-[#605dba] rounded-[100%] top-[0.2rem] absolute left-0">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                      </svg>
+                      
+                    </span>
+                    <span>Etiam porta euismod malesuada mollis.</span>
+                  </li>
+                  <li class="relative pl-6 mt-3">
+                    <span class="w-5 h-5 flex justify-center items-center bg-[#e2e2f3] text-[#605dba] p-1 rounded-[100%] top-[0.2rem] absolute left-0">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                      </svg>                      
+                    </span>
+                    <span>Vivamus sagittis lacus vel augue rutrum.</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY-CHOOSE-US -->
+
+  <section class="why-choose-us mt-[100px]">
+    <div class="container mx-auto">
+      <div class="flex flex-wrap">
+        <div class="w-full lg:w-1/2">
+          <div class="customers-items mt-[50px] px-[20px] mr-[70px] animate__fadeIn wow">
+            <h4 class="mb-3" style="color: var(--theme-color);">HAVE PERFECT CONTROL</h4>
+            <h2 class="text-[2rem] font-semibold mb-4">We bring solutions to make</br> life easier for our </br> customers.</h2>
+            <p class="mb-5 leading-8 text-[17px] text-[#60697b]">Etiam porta sem malesuada magna mollis euismod. Donec ullamcorper nulla non metus auctor fringilla. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Fusce dapibus, tellus ac cursus. Integer posuere erat a ante venenatis dapibus posuere velit.</p>
+            <ul  class="mt-[30px] text-[#60697b]">
+              <li class="relative pl-6">
+                <span class="w-5 h-5 p-1 text-[0.8rem] flex justify-center items-center bg-[#e2e2f3] text-[#605dba] rounded-[100%] top-[0.2rem] absolute left-0">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                  </svg>
+                </span>
+                <span class="ms-2">Aenean eu leo quam. Pellentesque ornare.</span>
+              </li>
+              <li class="relative pl-6 mt-3">
+                <span class="w-5 h-5 flex justify-center items-center bg-[#e2e2f3] text-[#605dba] p-1 rounded-[100%] top-[0.2rem] absolute left-0">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                  </svg>                      
+                </span>
+                <span class="ms-2">Nullam quis risus eget urna mollis ornare.</span>
+              </li>
+              <li class="relative pl-6 mt-3">
+                <span class="w-5 h-5 flex justify-center items-center bg-[#e2e2f3] text-[#605dba] p-1 rounded-[100%] top-[0.2rem] absolute left-0">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                  </svg>                      
+                </span>
+                <span class="ms-2">Donec id elit non mi porta gravida at eget.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="w-full lg:w-1/2">
+          <div class="customers-img p-[50px] relative animate__fadeIn wow">
+            <img src="../img/choose-us-1.jpg" title="choose-us-1" alt="choose-us-1" class="w-full rounded-xl">
+            <div class="py-4 px-5">
+              <div style="box-shadow: 0 0.25rem 1.75rem rgba(30,34,40,0.07) !important;" class="flex flex-wrap items-center absolute top-1/4 left-0 bg-slate-50 pr-5 py-3 rounded border border-[rgba(164,174,198,0.2)]">
+                <div>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 234.66" data-inject-url="https://sandbox-tailwindcss.ibthemespro.com/assets/img/icons/solid/cloud-group.svg" class="mx-5 svg-inject icon-svg !w-[2.2rem] !h-[2.2rem]  solid-duo text-grape-fuchsia mr-3"><circle class="fill-[#f857a6]" cx="128" cy="149.33" r="21.33"></circle><path class="fill-[#f857a6]" d="M162.67 234.66H93.34a8 8 0 01-8-8v-16a29.36 29.36 0 0129.33-29.33h26.67a29.35 29.35 0 0129.33 29.33v16a8 8 0 01-8 8zm32-64h-14.19a55.46 55.46 0 0116.85 40v2.67H216a8.06 8.06 0 008-8V200a29.32 29.32 0 00-29.33-29.34zm-133.34 0A29.31 29.31 0 0032 200v5.35a8.06 8.06 0 008 8h18.67v-2.67a55.46 55.46 0 0116.85-40z"></path><circle class="fill-[#f857a6]" cx="74.67" cy="138.66" r="21.33"></circle><circle class="fill-[#f857a6]" cx="181.33" cy="138.66" r="21.33"></circle><path class="fill-[#605dba]" d="M27.2 162.94a52.21 52.21 0 018.8-6.56A42.48 42.48 0 01107.73 112a41 41 0 0140.54 0A42.48 42.48 0 01220 156.38a55.09 55.09 0 015.83 4 64.4 64.4 0 00-26.65-118.49A81.31 81.31 0 00128 0C90.19 0 57.39 26.3 49.1 62.18 21.54 65.07 0 88.22 0 116.26c0 19.93 11 37.21 27.2 46.68z"></path></svg>
+                </div>
+                <div>
+                  <h3 class="text-[1.25rem]" style="visibility: visible;">
+                    <div class="container">
+                      <div id="number_up"></div>
+                    </div>
+                  </h3>
+                  <p class="text-[0.8rem]">Happy Clients</p>
+                </div>
+              </div>
+              <div class="rounded absolute bottom-1/4 -left-[20px] p-6 bg-white text-center"
+              style="box-shadow: 0 0.25rem 1.75rem rgba(30,34,40,0.07) !important;">
+                <div class="progressbar semi-circle fuchsia !relative !mb-3 !m-[0_auto_1rem] !w-[8.5rem] !h-[4.25rem]" data-value="80" style="position: relative;"><svg viewBox="0 0 100 50" style="display: block; width: 100%;"><path d="M 50,50 m -47,0 a 47,47 0 1 1 94,0" stroke="#eee" stroke-width="6" fill-opacity="0"></path><path d="M 50,50 m -47,0 a 47,47 0 1 1 94,0" stroke="#f857a6" stroke-width="6" fill-opacity="0" style="stroke-dasharray: 147.708, 147.708; stroke-dashoffset: 29.5416;"></path></svg><div class="progressbar-text" style="position: absolute; left: 50%; top: auto; padding: 0px; margin: 0px; transform: translate(-50%, 0px); color: rgb(85, 85, 85); bottom: 0px;"><span class="text-3xl">80</span>%</div></div>
+                <h4 class="text-xl">Time Saved</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OUR-WORKS -->
+
+  <section class="our-works mt-[100px] relative">
+      <div class="our-works-bg bg-center relative bg-local h-[800px] lg:h-[500px]" style="background-image: url(../img/our-works-1.png);">
+        <div class="container mx-auto">
+          <div class="flex flex-wrap py-[100px] items-center absolute right-0 left-0 z-[99]">
+            <div class="w-full lg:w-4/12 animate__fadeIn wow">
+              <div class="our-works-items px-[40px] max-w-[350px] mb-5 mx-auto">
+                <h2 class="text-4xl font-medium mb-3">We are proud of our works</h2>
+                <p class="text-[1.3rem] font-medium text-[#60697B]">We bring solutions to make life easier for our customers.</p>
+              </div>
+            </div>
+            <div class="w-full lg:w-8/12">
+              <div class="our-works-items animate__fadeIn wow">
+                <div class="flex flex-wrap">
+                  <div class="w-full text-center lg:w-4/12">
+                    <div>
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256.1 256.01" data-inject-url="https://sandbox-tailwindcss.ibthemespro.com/assets/img/icons/solid/target.svg" class="svg-inject icon-svg !w-[2.2rem] !h-[2.2rem]  solid-duo text-grape-fuchsia !mb-3 m-[0_auto]"><path class="fill-[#f857a6]" d="M178.66 79.37L166.93 91.1a76.68 76.68 0 014.91 11.52 85.77 85.77 0 0114.93-1.28h1.39a93.65 93.65 0 00-9.5-21.97zM0 128a96.1 96.1 0 00109.65 95 82.93 82.93 0 01-5.65-15.42 67 67 0 01-8 .43A80 80 0 0196 48a79 79 0 0137 9.17l11.73-11.73A94.73 94.73 0 0096 32a96.14 96.14 0 00-96 96z"></path><path class="fill-[#f857a6]" d="M37.33 128A58.78 58.78 0 0096 186.68a47.26 47.26 0 005.44-.32A82.71 82.71 0 01103 170a37.32 37.32 0 01-7 .64 42.67 42.67 0 010-85.34 32.88 32.88 0 018 .84l12.91-12.91a57 57 0 00-20.91-4A58.81 58.81 0 0037.33 128z"></path><path class="fill-[#f857a6]" d="M96 106.68A21.33 21.33 0 10117.33 128 21.39 21.39 0 0096 106.68zm0 26.66a5.33 5.33 0 115.33-5.33 5.28 5.28 0 01-5.33 5.33z"></path><path class="fill-[#605dba]" d="M96.1 136a8 8 0 01-5.67-13.65L159.76 53a8 8 0 0111.31 11.31l-69.33 69.33A8 8 0 0196.1 136z"></path><path class="fill-[#605dba]" d="M194.77 64H168.1a8 8 0 01-8-8V29.34a8.08 8.08 0 012.33-5.67l21.33-21.33A8 8 0 01197.42 8v18.68h18.68a8 8 0 015.66 13.66l-21.33 21.33a8 8 0 01-5.66 2.33zm-8 53.34a69.34 69.34 0 1069.33 69.34 69.4 69.4 0 00-69.33-69.34zm29.87 56.11L182 210.78a8 8 0 01-11.09.64l-18.67-16a8 8 0 1110.41-12.15l12.84 11 29.44-31.69a8 8 0 0111.74 10.88z"></path>
+                      </svg>
+                      <h3 class="text-[2rem] font-medium">1000+</h3>
+                      <p class="text-[1.1rem] font-medium text-[#60697B]">Completed Projects</p>
+                    </div>
+                  </div>
+                  <div class="w-full text-center mt-[30px] lg:w-4/12 lg:mt-0">
+                    <div>
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 245.34" data-inject-url="https://sandbox-tailwindcss.ibthemespro.com/assets/img/icons/solid/bar-chart.svg" class="svg-inject icon-svg !w-[2.2rem] !h-[2.2rem]  solid-duo text-grape-fuchsia !mb-3 m-[0_auto]"><path class="fill-[#f857a6]" d="M32 106.67A10.67 10.67 0 0124.91 88l48-42.67a10.62 10.62 0 018.37-2.61l83 10.07 47-44.56A10.66 10.66 0 01226 23.74l-50.67 48a10.73 10.73 0 01-8.61 2.85L83.49 64.5 39.09 104a10.61 10.61 0 01-7.09 2.7z"></path><path class="fill-[#f857a6]" d="M226.67 53.34A8 8 0 01221 51l-37.32-37.34A8 8 0 01189.33 0h37.33a8 8 0 018 8v37.33a8 8 0 01-4.95 7.39 7.66 7.66 0 01-3.04.62z"></path><path class="fill-[#605dba]" d="M74.67 184v29.33h-64V184A13.33 13.33 0 0124 170.67h37.33A13.34 13.34 0 0174.67 184zM160 120v93.33H96V120a13.33 13.33 0 0113.33-13.33h37.33A13.33 13.33 0 01160 120zm85.33 21.34v72h-64v-72A13.32 13.32 0 01194.66 128H232a13.31 13.31 0 0113.33 13.34z"></path><path class="fill-[#f857a6]" d="M248 245.34H8a8 8 0 010-16h240a8 8 0 010 16z"></path></svg>
+                      <h3 class="text-[2rem] font-medium">4x</h3>
+                      <p class="text-[1.1rem] font-medium text-[#60697B]">Revenue Growth</p>
+                    </div>
+                  </div>
+                  <div class="w-full text-center mt-[30px] lg:w-4/12 lg:mt-0">
+                    <div class="">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" data-inject-url="https://sandbox-tailwindcss.ibthemespro.com/assets/img/icons/solid/employees.svg" class="svg-inject icon-svg !w-[2.2rem] !h-[2.2rem]  solid-duo text-grape-fuchsia !mb-3 m-[0_auto]"><path class="fill-[#f857a6]" d="M72.11 86.51l-3.52-21 1.41-1.4-4.36-4.48a24.12 24.12 0 01-5.78-24.43c.11-.32.2-.53.32-.85l-1.4-.21-9-18.88a8 8 0 00-14.49 0l-8.88 19-19.69 3.07a8 8 0 00-6.29 5.44 7.94 7.94 0 001.92 8.11l14.51 14.83-3.42 21A8.07 8.07 0 0021.33 96a8.33 8.33 0 004-1l17.49-9.81 17.6 9.6a8.2 8.2 0 008.53-.43 8 8 0 003.21-7.89zm183.46-44.06a7.85 7.85 0 00-6.4-5.33l-19.73-3-9-18.88a8 8 0 00-14.5 0l-8.86 19-1.17.21c0 .11.11.21.11.32a23.76 23.76 0 01-5.44 24.32L185.81 64l1.71 1.71-3.41 21A8.07 8.07 0 00192 96a8.33 8.33 0 004-1l17.49-9.81 17.6 9.6a8.2 8.2 0 008.53-.43 8.06 8.06 0 003.2-7.89l-3.52-21 14.51-14.92a8.09 8.09 0 001.81-8.13z"></path><path class="fill-[#605dba]" d="M100.18 106.67a8 8 0 01-7.91-9.25l4.61-28.8L77 48.37a8 8 0 014.46-13.51l27.09-4.22 12.11-26a8 8 0 017.2-4.64 8 8 0 017.23 4.58l12.29 25.9 27.12 4.05A8 8 0 01179.09 48l-19.78 20.38 4.8 28.77a8 8 0 01-11.74 8.34l-24.19-13.25-24.12 13.42a7.94 7.94 0 01-3.88 1z"></path><circle class="fill-[#f857a6]" cx="42.67" cy="160" r="21.33"></circle><path class="fill-[#f857a6]" d="M71.15 196.27A44.71 44.71 0 0053.34 232v2.67H8a8.06 8.06 0 01-8-8v-5.33A29.32 29.32 0 0129.33 192H56a29.13 29.13 0 0115.15 4.27z"></path><circle class="fill-[#f857a6]" cx="213.33" cy="160" r="21.33"></circle><path class="fill-[#f857a6]" d="M256 221.33v5.33a8.07 8.07 0 01-8 8h-45.33V232a44.69 44.69 0 00-17.81-35.73A29.07 29.07 0 01200 192h26.67A29.32 29.32 0 01256 221.33z"></path><circle class="fill-[#605dba]" cx="128" cy="154.67" r="32"></circle><path class="fill-[#605dba]" d="M157.33 202.67H98.66A29.35 29.35 0 0069.33 232v16a8 8 0 008 8h101.33a8 8 0 008-8v-16a29.35 29.35 0 00-29.33-29.33z"></path></svg>
+                      <h3 class="text-[2rem] font-medium">99.7%</h3>
+                      <p class="text-[1.1rem] font-medium text-[#60697B]">Customer Satisfaction</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hidden lg:block">
+        <div class="flex flex-wrap mx-[30px] -translate-y-[7rem]">
+          <div class="w-3/12">
+            <div class="our-works-content mx-[20px] p-[40px] bg-white border-[rgba(164, 174, 198, 0.2)] shadow-[0 0.25rem 1.75rem rgba(30,34,40,0.07)] rounded-xl border-b-4 border-[#cfceea]">
+              <p class="text-[1.1rem] font-medium text-[#60697B] leading-[2] mb-[2rem]">“Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Vestibulum id ligula porta. Cras mattis consectetur.”</p>
+              <h4 class="font-medium text-xl mb-2">Coriss Ambady</h4>
+              <p class="font-medium text-[#60697B]">Financial Analyst</p>
+            </div>
+          </div>
+          <div class="w-3/12">
+            <div class="our-works-content mx-[20px] p-[40px] bg-white border-b-4 border-[#cfceea] shadow-[0 0.25rem 1.75rem rgba(30,34,40,0.07)] rounded-xl">
+              <p class="text-[1.1rem] font-medium text-[#60697B] leading-[2] mb-[2rem]">“Fusce dapibus, tellus ac cursus tortor mauris condimentum fermentum massa justo sit amet purus sit amet fermentum.”</p>
+              <h4 class="font-medium text-xl mb-2">Cory Zamora</h4>
+              <p class="font-medium text-[#60697B]">Marketing Specialist</p>
+            </div>
+          </div>
+          <div class="w-3/12">
+            <div class="our-works-content mx-[20px] p-[40px] bg-white border-b-4 border-[#cfceea] shadow-[0 0.25rem 1.75rem rgba(30,34,40,0.07)] rounded-xl">
+              <p class="text-[1.1rem] font-medium text-[#60697B] leading-[2] mb-[2rem]">“Curabitur blandit tempus porttitor. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor eu rutrum. Nulla vitae libero.”</p>
+              <h4 class="font-medium text-xl mb-2">Nikolas Brooten</h4>
+              <p class="font-medium text-[#60697B]">Sales Manager</p>
+            </div>
+          </div>
+          <div class="w-3/12">
+            <div class="our-works-content mx-[20px] p-[40px] bg-white border-b-4 border-[#cfceea] shadow-[0 0.25rem 1.75rem rgba(30,34,40,0.07)] rounded-xl">
+              <p class="text-[1.1rem] font-medium text-[#60697B] leading-[2] mb-[2rem]">“Etiam adipiscing tincidunt elit convallis felis suscipit ut. Phasellus rhoncus eu tincidunt auctor nullam rutrum, pharetra augue.”</p>
+              <h4 class="font-medium text-xl mb-2">Coriss Ambady</h4>
+              <p class="font-medium text-[#60697B]">Financial Analyst</p>
+            </div>
+          </div>
+        </div>
+      </div>
+  </section>
+
+  <!-- CASE STUDIES -->
+
+  <section class="case-studies mb-[150px] mt-[100px] lg:mt-0">
+    <div class="case-studies-title text-center mb-[50px] animate__fadeInDown wow">
+      <h6 class="mb-2" style="color: var(--theme-color);">CASE STUDIES</h6>
+      <h2 class="text-2xl lg:text-4xl font-medium">Check out some of our awesome projects </br> with creative ideas and great design.</h2>
+    </div>
+    <div class="container mx-auto">
+      <div class="slider responsive overflow-hidden">
+				<div class="animate__fadeInUp wow">
+					<a href="javascript:void(0)">
+            <img src="../img/case-studies-1.jpg" title="case-studies-1" alt="case-studies-1" class="p-[20px] w-full">
+            <!-- <div>
+              <span class="bg-[rgb(30 34 40 / 60%)]">
+                fdkfmlfjsdkmvmk
+              </span>
+            </div> -->
+            <h2  class="pl-[20px] text-2xl font-semibold">Ligula tristique quis risus</h2>
+            <ul class="flex pl-[20px] pt-4">
+              <li>
+                <i class="ri-calendar-line"></i>
+                14 Apr 2022
+              </li>
+              <li class="ms-5">
+                <i class="ri-file-chart-line"></i>
+                Coding
+              </li>
+            </ul>
+          </a>
+				</div>
+				<div class="animate__fadeInDown wow">
+					<a href="javascript:void(0)">
+            <img src="../img/case-studies-2.jpg" title="case-studies-1" alt="case-studies-1" class="p-[20px] w-full">
+            <h2  class="pl-[20px] text-2xl font-semibold">Nullam id dolor elit id nibh</h2>
+            <ul class="flex pl-[20px] pt-4">
+              <li>
+                <i class="ri-calendar-line"></i>
+                29 Mar 2022
+              </li>
+              <li class="ms-5">
+                <i class="ri-file-chart-line"></i>
+                Workspace
+              </li>
+            </ul>
+          </a>
+				</div>
+        <div class="animate__fadeInUp wow">
+					<a href="javascript:void(0)">
+            <img src="../img/case-studies-3.jpg" title="case-studies-1" alt="case-studies-1" class="p-[20px] w-full">
+            <h2  class="pl-[20px] text-2xl font-semibold">Ultricies fusce porta elit</h2>
+            <ul class="flex pl-[20px] pt-4">
+              <li>
+                <i class="ri-calendar-line"></i>
+                26 Feb 2022
+              </li>
+              <li class="ms-5">
+                <i class="ri-file-chart-line"></i>
+                Meeting
+              </li>
+            </ul>
+          </a>
+				</div>
+        <div>
+					<a href="javascript:void(0)">
+            <img src="../img/case-studies-4.jpg" title="case-studies-1" alt="case-studies-1" class="p-[20px] w-full">
+            <h2  class="pl-[20px] text-2xl font-semibold">Morbi leo risus porta eget</h2>
+            <ul class="flex pl-[20px] pt-4">
+              <li>
+                <i class="ri-calendar-line"></i>
+                7 Jan 2022
+              </li>
+              <li class="ms-5">
+                <i class="ri-file-chart-line"></i>
+                Business Tips
+              </li>
+            </ul>
+          </a>
+				</div>
+			</div>
+    </div>
+  </section>
+
+  <!-- CONTACT-US -->
+
+  <section class="contact-us my-[100px]">
+    <div class="container mx-auto">
+      <div class="flex flex-wrap">
+        <div class="w-full xl:w-1/2">
+          <div class="contact-us-img px-[7.5px] mx-[50px] animate__fadeIn wow">
+            <img src="../img/contact-us-1.png" title="contact-us-1" alt="contact-us-1">
+          </div>
+        </div>
+        <div class="w-full xl:w-1/2">
+          <div class="contact-us-items mt-[50px] xl:mt-0 animate__fadeIn wow">
+            <h6 class="mb-3" style="color: var(--theme-color);">CONTACT US</h6>
+            <h2 class="text-4xl font-semibold -tracking-tight mb-8">Got any questions? Don't</br> hesitate to get in touch.</h2>
+            <ul class="flex mb-[1rem]">
+              <li>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 255.84" data-inject-url="https://sandbox-tailwindcss.ibthemespro.com/assets/img/icons/solid/pin.svg" class="svg-inject icon-svg !w-[1.8rem] !h-[1.8rem]  solid-duo text-grape-fuchsia mt-1 !mr-4"><path class="fill-[#f857a6]" d="M10.67 255.84a10.68 10.68 0 01-7.54-18.23l86.08-86a10.67 10.67 0 1115.08 15.1l-86.08 86a10.61 10.61 0 01-7.54 3.13z"></path><path class="fill-[#605dba]" d="M250.54 80.72L175.12 5.29a19.12 19.12 0 00-26.4 0L138.3 15.71a27.18 27.18 0 00-6.61 27.93A11.25 11.25 0 01129 55.21L98.38 85.79a13.3 13.3 0 01-9.38 3.9H76.46a29.11 29.11 0 00-20.73 8.59l-5.06 5.06a18.66 18.66 0 000 26.4l75.42 75.42a18.64 18.64 0 0026.4 0l5.06-5.07a29.12 29.12 0 008.59-20.73v-12.5a13.43 13.43 0 013.91-9.42l30.57-30.58a11.24 11.24 0 0111.57-2.74 27.14 27.14 0 0027.92-6.6l10.42-10.42a18.65 18.65 0 000-26.38z"></path></svg>
+              </li>
+              <li>
+                <h2 class="text-[343F52] text-xl">Address</h2>
+                <p class="text-[#60697B]">Moonshine St. 14/05 Light City, London
+                </p>
+              </li>
+            </ul>
+            <ul class="flex mb-[1rem]">
+              <li>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256.01 256" data-inject-url="https://sandbox-tailwindcss.ibthemespro.com/assets/img/icons/solid/rotary.svg" class="svg-inject icon-svg !w-[1.8rem] !h-[1.8rem]  solid-duo text-grape-fuchsia mt-1 !mr-4"><path class="fill-[#f857a6]" d="M128 106.67a128.15 128.15 0 00-128 128A21.36 21.36 0 0021.34 256h213.32A21.36 21.36 0 00256 234.67c0-70.57-57.42-128-128-128zM128 224a42.67 42.67 0 1142.67-42.67A42.71 42.71 0 01128 224z"></path><path class="fill-[#605dba]" d="M33.45 117.34a22.89 22.89 0 01-12.56-3.69 50.7 50.7 0 01-6.61-5.12A43.84 43.84 0 01.74 68.3C5.45 43.31 33.27 27.06 53.8 17A169.32 169.32 0 01128 0c34.77 0 69.86 10.62 96.26 29.14 11.95 8.4 26.22 20.11 30.4 36.41a44 44 0 01-12.93 43 49.9 49.9 0 01-6.49 5 23.84 23.84 0 01-26.87-.76L171.1 86.18c-8.32-5.94-11.64-16.42-8.08-25.52.19-.53.41-1 .64-1.56a113 113 0 00-71.33 0l.67 1.54c3.57 9.1.22 19.6-8.08 25.52l-37.3 26.61a24.15 24.15 0 01-14.14 4.57z"></path></svg>
+              </li>
+              <li>
+                <h2 class="text-[343F52] text-xl">Phone</h2>
+                <h4 class="text-[#60697B]">00 (123) 456 78 90</h4>
+              </li>
+            </ul>
+            <ul class="flex">
+              <li>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 202.66" data-inject-url="https://sandbox-tailwindcss.ibthemespro.com/assets/img/icons/solid/emails.svg" class="svg-inject icon-svg !w-[1.8rem] !h-[1.8rem]  solid-duo text-grape-fuchsia mt-1 !mr-4"><path class="fill-[#605dba]" d="M192 0H21.33A21.36 21.36 0 000 21.33v96a21.36 21.36 0 0021.33 21.33H192a21.36 21.36 0 0021.33-21.33v-96A21.36 21.36 0 00192 0zm0 48l-73.6 37.12A25.12 25.12 0 01106.67 88a24.39 24.39 0 01-11.84-3L21.34 48V30.08l80.85 40.75a9.64 9.64 0 008.85.11l81-40.86z"></path><path class="fill-[#f857a6]" d="M234.67 64v53.33A42.72 42.72 0 01192 160H42.67v21.33A21.36 21.36 0 0064 202.66h170.67A21.36 21.36 0 00256 181.33v-96A21.36 21.36 0 00234.67 64z"></path></svg>
+              </li>
+              <li>
+                <h2 class="text-[343F52] text-xl">E-mail</h2>
+                <h4 class="text-[#60697B]">sandbox@email.com</h4>
+              </li>
+            </ul>
+          </div>
+        </div>  
+      </div>
+    </div>
+  </section>
+
+  <!-- OUR-COMMUNITY -->
+
+  <section class="our-community-bg bg-center bg-local py-[100px]" style="background-image: url(../img/our-works-1.png);">
+    <div class="flex flex-wrap justify-center">
+      <div class="our-community-items text-center animate__fadeInTopLeft wow">
+        <h5 class="mb-3" style="color: var(--theme-color);">JOIN OUR COMMUNITY</h5>
+        <h2 class="text-[1.7rem] lg:text-[2rem] font-semibold mb-7 tracking-wider">We are trusted by over 5000+ clients. Join
+        </br> them now and grow your business.</h2>
+        <a href="javascript:void(0)" class="py-[15px] px-[28px] gradient-1 text-white rounded-lg hover:bg-black transition-all">Get started</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- FOOTER -->
+
+<footer class="py-[100px]">
+  <div class="container mx-auto">
+    <div class="flex flex-wrap">
+      <div class="w-full lg:w-1/2 xl:w-3/12">
+        <div class="footer-items mt-[20px] lg:px-[20px]">
+          <img src="../img/logo.png" title="logo" alt="logo">
+          <p class="py-4 text-[1.2rem] text-[#60697B]">© 2024 Sandbox.<br>
+            All rights reserved.</p>
+          <ul class="flex items-center">
+            <li>
+              <a href="javascript:void(0)" class="mr-2 text-[1.4rem] text-[#5daed5] hover:-translate-y-1 transition-all">
+                <i class="ri-twitter-fill hover:tra"></i>
+              </a>
+            </li>
+            <li>
+              <a href="javascript:void(0)" class="mr-2 text-[1.4rem] text-[#4470cf] hover:-translate-y-1 transition-all">
+                <i class="ri-facebook-fill"></i>
+              </a>
+            </li>
+            <li>
+              <a href="javascript:void(0)" class="mr-2 text-[1.4rem] text-[#e94d88] hover:-translate-y-1 transition-all">
+                <i class="ri-basketball-line"></i>
+              </a>
+            </li>
+            <li>
+              <a href="javascript:void(0)" class="mr-2 text-[1.4rem] text-[#d53581] hover:-translate-y-1 transition-all">
+                <i class="ri-instagram-line"></i>
+              </a>
+            </li>
+            <li>
+              <a href="javascript:void(0)" class="mr-2 text-[1.4rem] text-red-600 hover:-translate-y-1 transition-all">
+                <i class="ri-youtube-fill"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="w-full lg:w-1/2 xl:w-3/12">
+        <div class="footer-items mt-[20px]">
+          <h4 class="text-xl mb-3">Get in Touch</h4>
+          <p class="pr-[100px] mb-5 text-[18px] text-[#60697B] leading-7">Moonshine St. 14/05 Light City, London, United Kingdom</p>
+          <p class="text-[#60697B] text-[17px]">info@email.com <br>
+            00 (123) 456 78 90</p>
+        </div>
+      </div>
+      <div class="w-full lg:w-1/2 xl:w-3/12">
+        <div class="footer-items mt-[20px] lg:px-[20px]">
+          <h4 class="text-xl mb-3">Learn More</h4>
+          <ul>
+            <li>
+              <a href="javascript:void(0)" class="text-[#60697B] text-[17px]">About Us</a>
+            </li>
+            <li>
+              <a href="javascript:void(0)" class="text-[#60697B] text-[17px] mt-[0.5rem]">Our Story</a>
+            </li>
+            <li>
+              <a href="javascript:void(0)" class="text-[#60697B] text-[17px] mt-[0.5rem]">Projects</a>
+            </li>
+            <li>
+              <a href="javascript:void(0)" class="text-[#60697B] text-[17px] mt-[0.5rem]">Terms of Use</a>
+            </li>
+            <li>
+              <a href="javascript:void(0)" class="text-[#60697B] text-[17px] mt-[0.5rem]">Privacy Policy</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="w-full lg:w-1/2 xl:w-3/12">
+        <div class="footer-items mt-[20px]">
+          <h4 class="text-xl mb-3">Our Newsletter</h4>
+          <p class="pr-[100px] mb-5 text-[18px] text-[#60697B] leading-7">Subscribe to our newsletter to get our news & deals delivered to you.</p>
+          <form class="relative">
+            <input type="email" placeholder="Email Address" class="w-[100px] lg:w-[200px] rounded-l-2xl  p-[15px] outline-none border">
+            <span style="background-color: var(--theme-color);" class="absolute px-5 pt-3 text-white rounded-r-xl xl:right-30 top-0 bottom-0 inline-block">
+              Join
+            </span>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<a href="#top" style="background-color:var(--theme-color);" class="back-to-top text-white border z-30 text-center py-2 px-3 transition-all hidden rounded-full fixed bottom-3 right-4">
+  <i class="ri-arrow-up-line"></i>
+</a>
+
+<div class="wrapper">
+  <div class="loader">
+      <div class="loading one"></div>
+      <div class="loading two"></div>
+      <div class="loading three"></div>
+      <div class="loading four"></div>
+  </div>
+</div>
+
+
+
+    <script src="../js/jquery-3.7.1.min.js" type="text/javascript"></script>
+    <script src="../js/slick.min.js" type="text/javascript"></script>
+    <script src="../js/swiper-bundle.min.js" type="text/javascript"></script>
+    <script src="../js/jquery.js" type="text/javascript"></script>
+    <script src="../js/wow.min.js" type="text/javascript"></script>
+    <script>
+      new WOW().init();
+    </script>
+</body>
+</html>

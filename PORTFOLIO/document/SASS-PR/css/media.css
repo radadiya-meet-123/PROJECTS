@@ -1,0 +1,172 @@
+@media (max-width: 1199px) {
+  .about-since {
+    display: none;
+  }
+  .banner .col-8 .banner-item:last-child:before {
+    height: 1000px;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+    position: absolute;
+    content: "";
+    background: rgba(255, 255, 255, 0.6);
+  }
+}
+@media (max-width: 991px) {
+  .col-md-12 {
+    width: 100%;
+  }
+  .col-md-6 {
+    width: 50%;
+  }
+  .col-md-4 {
+    width: 33.33%;
+  }
+  .banner .banner-item h1 {
+    font-size: 50px !important;
+  }
+  .services .col-4:last-child .services-items {
+    margin-top: 50px;
+  }
+  .services h2 {
+    font-size: 40px !important;
+  }
+  .brands .slick-prev {
+    left: -11px;
+  }
+  .brands .slick-next {
+    right: 0;
+  }
+  .about .about-img {
+    margin-right: 0;
+  }
+  .about .about-content img {
+    margin-left: 30px;
+  }
+  .about .about-content h2 {
+    font-size: 40px;
+  }
+  .about .about-content h4 {
+    font-size: 15px !important;
+  }
+  .blog .blog-items {
+    margin-right: 0;
+  }
+  .blog .blog-items h2 {
+    font-size: 35px;
+  }
+  .blog .blog-items h4 {
+    font-size: 18px !important;
+  }
+  .support .support-item {
+    margin-left: 0;
+    margin-top: 50px;
+  }
+  .support h2 {
+    font-size: 35px !important;
+    max-width: 500px;
+  }
+  .testimonial .testimonial-items h2 {
+    font-size: 35px;
+  }
+  .testimonial .testimonial-img {
+    padding: 0;
+    margin-top: 50px;
+  }
+  .journal .col-4:last-child .journal-items {
+    margin-top: 50px;
+  }
+  .newsletter-bg {
+    padding: 32px 29px !important;
+  }
+  .newsletter-bg .newletter-items h2 {
+    font-size: 35px !important;
+  }
+  footer .col-3 .footer-items {
+    padding-bottom: 0;
+  }
+  footer .col-3:last-child .footer-items {
+    padding: 0;
+  }
+}
+@media (max-width: 767px) {
+  .col-sm-12 {
+    width: 100%;
+  }
+  .col-sm-6 {
+    width: 50%;
+  }
+  header {
+    padding: 10px 0;
+  }
+  header nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: #151735;
+    padding: 10px 0 10px 15px;
+  }
+  header nav ul {
+    flex-direction: column;
+  }
+  header nav ul li {
+    padding: 5px 0;
+  }
+  header nav ul li a {
+    padding: 0;
+    color: white;
+  }
+  header .nav-menu .theme-btn {
+    display: none;
+  }
+  header .toggle {
+    display: block;
+    margin: 0 20px;
+  }
+  .viedo-area-items h2 {
+    font-size: 40px !important;
+  }
+  .gallery h2 {
+    font-size: 35px;
+  }
+  .journal .journal-title h2 {
+    font-size: 35px;
+  }
+  .journal .col-4:nth-child(2) .journal-items {
+    margin-top: 50px;
+  }
+  footer .col-3:last-child .footer-items {
+    padding: 50px 0;
+  }
+}
+@media (max-width: 575px) {
+  .col-xs-12 {
+    width: 100%;
+  }
+  .banner .banner-item h1 {
+    font-size: 30px !important;
+    margin: 10px 0 !important;
+  }
+  .banner .banner-item h2 {
+    font-size: 20px !important;
+  }
+  .services .col-4:nth-child(2) .services-items {
+    margin-top: 50px;
+  }
+  .viedo-area {
+    padding: 50px 0;
+  }
+  .viedo-area .viedo-area-items h2 {
+    font-size: 30px !important;
+  }
+  .blog .blog-items h2 {
+    font-size: 40px;
+  }
+  .blog .blog-items h4 {
+    font-size: 20px !important;
+  }
+}
+
+/*# sourceMappingURL=media.css.map */

@@ -1,0 +1,296 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --theme--light:#c4cfde;
+    --theme--pink: #ff014f;
+    --theme--shadow: 10px 10px 19px #1c1e22, -10px -10px 19px #262a2e;
+    --theme--bg-1: #191b1e;
+} 
+
+body{
+    font-family: 'Satoshi-Variable'!important;
+    background-color: #212428!important;
+    color: #fff!important;
+}
+.contact .col-12:first-child{
+    box-shadow: var(--theme--shadow);
+    border-radius: 20px;
+}
+html{
+	scroll-behavior:smooth;
+}
+
+/* HEADER */
+
+.navbar button .navbar-toggler-icon{
+    color: #fff!important;
+}
+header form button{
+    background-color: var(--theme--pink);
+    color: #fff;
+}
+/* BANNER */
+
+.banner{
+    padding-top: 90px;
+    padding-bottom: 70px;
+}
+.banner-content h6{
+    color: var(--theme--light);
+    font-size: 16px;
+    letter-spacing: 3px;
+    font-weight: 500;
+}
+.banner-content h1{
+    font-size: 60px;
+    line-height: 90px;
+}
+.banner-content h1 span{
+    color: var(--theme--pink);
+}
+.banner-content p{
+    color: var(--theme--light);
+    font-size: 18px;
+    line-height: 32px;
+}
+.banner-content a{
+    background-color: var(--theme--pink);
+    transition: 1.5s;
+}
+.banner-content a:hover{
+    background-color: var(--theme--light);
+    color: var(--theme--pink)!important;
+}
+
+/* ABOUT */
+
+.about .about-content h6 span{
+    color: var(--theme--pink);
+}
+.about .about-content p{
+    font-size: 17px;
+}
+
+/* EDUCATION */
+
+.education{
+    padding-top: 120px;
+    padding-bottom: 100px;
+}
+.education img{
+    object-fit: cover;
+}
+.education-item h2{
+    color: var(--theme--pink);
+}
+.education .education-item p{
+    letter-spacing: 1px;
+    line-height: 28px;
+}
+.education .education-content h5{
+    font-size: 17px; 
+    font-weight: 400;
+}
+.education .education-content h6 span{
+    color: var(--theme--pink); 
+}
+.education .education-content h6{
+    font-size: 14px; 
+    font-weight: 400;
+}
+.education .education-content p{
+    color: var(--theme--light);
+    font-size: 17px;
+    line-height: 32px;
+}
+
+/* PORTFOLIO */
+
+.portfolio{
+    padding-bottom: 100px;
+}
+.portfolio .portfolio-title{
+    padding-bottom: 50px;
+}
+.portfolio .portfolio-title h2{
+    font-size: 50px;
+}
+.portfolio .portfolio-title h6{
+    color: var(--theme--pink);
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+.portfolio .portfolio-img img{
+    object-fit: cover;
+    background-position: top;
+    transition: 3s;
+}
+.portfolio .portfolio-img {
+    overflow: hidden;
+}
+.portfolio .portfolio-item{
+    box-shadow: var(--theme--shadow);
+    border-radius: 15px;
+    overflow: hidden;
+}
+.portfolio .portfolio-item:hover{
+    background: linear-gradient(to right bottom, #212428, #16181c);
+}
+.portfolio .portfolio-item:hover img{
+    transform: scale(1.2);
+}
+.portfolio .portfolio-content p{
+    font-size: 15px;
+    color: var(--theme--pink);
+}
+.portfolio .portfolio-content h5, .portfolio .portfolio-content i{
+    transition: 0.8s;
+}
+.portfolio .portfolio-content h5:hover, .portfolio .portfolio-content i:hover{
+    color: var(--theme--pink);
+}
+
+/* SKILLS */
+
+.skills-content{
+    padding-bottom: 70px;
+}
+.skills-content h2{
+    font-size: 40px;
+}
+.skills-content h6, .skills-content h2{
+    color: var(--theme--light);
+}
+.skills-content h6 span{
+    color: var(--theme--pink);
+}
+.skills .skills-item img{
+    background: rgba(255, 255, 255, 0.05);
+    padding: 25px;
+}
+.skills .skills-item img:hover{
+    background-color: var(--theme--pink);
+}
+
+/* CONTACT */
+
+.contact{
+    padding: 120px 0;
+}
+.contact .contact-title{
+    padding-bottom: 70px;
+}
+.contact .contact-title h6{
+    color: var(--theme--pink);
+    letter-spacing: 1px;
+}
+.contact .contact-title h2{
+    font-size: 40px;
+    letter-spacing: 1px;
+    color: var(--theme--light);
+}
+.contact-content form label{
+    display: block;
+    padding: 20px 0;
+}
+.contact-content form .col-6 input{
+    width: 100%;
+    height: 40px;
+}
+.contact-content form input,.contact-content form .col-12 button{
+    background-color: var(--theme--bg-1);
+    color: white;
+}
+.contact-content form input:focus{
+    border-color: var(--theme--pink)!important;
+}
+.contact-content form textarea{
+    background-color: var(--theme--bg-1);
+}
+.contact-content form .col-12 input, .contact-content form .col-12 button{
+    height: 40px;
+}
+.contact-content form .col-12 textarea{
+    height: 120px;
+}
+.contact .contact-content{
+    box-shadow: var(--theme--shadow);
+    border-radius: 10px;
+}
+.contact .contact-item h6, .contact .contact-item p, .contact .contact-item span{
+    color: var(--theme--light);
+}
+.contact .contact-item p{
+    font-size: 18px;
+}
+.contact .contact-item h4{
+    color: var(--theme--pink);
+}
+.contact .contact-item i{
+    color: var(--theme--light);
+    box-shadow: var(--theme--shadow);
+    font-size: 18px;  
+    transition: 0.8s;
+}
+.contact .contact-item i:hover{
+    color: var(--theme--pink);
+    transform: translateY(-10px);  
+}
+.contact-inner .contact-item  span a{
+    transition: 0.6s;
+}
+.contact-inner .contact-item  span a:hover{
+    color: var(--theme--pink)!important;
+    border-bottom: 1px solid var(--theme--pink);
+}
+
+
+/* FOOTER */
+
+footer{
+    background-color: var(--theme--bg-1);
+    padding-top: 100px;
+}
+footer .footer-item i{
+    background-color: var(--theme--pink);
+    font-size: 30px;
+    padding: 20px 24px;
+}
+footer .copy-right{
+    margin-top: 100px;
+}
+footer .copy-right-item{
+    margin-top: 30px;
+    color: var(--theme--light);
+}
+footer .copy-right-item ul li a{
+    color: var(--theme--light);
+}
+
+/* BACK TO TOP */
+
+.back-to-top {
+    background-color: var(--theme--pink);
+    width:45px;
+    height:45px;
+    line-height:45px;
+    border-radius:45px;
+    text-align:center;
+    position:fixed;
+    z-index:9;
+    right:15px;
+    bottom:15px;
+    transition:0.8s;
+}
+.back-to-top i{
+    font-size:18px;
+    color:#fff;
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+}
